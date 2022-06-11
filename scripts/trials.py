@@ -56,15 +56,15 @@ def gen_stack():
     # Category Selector
     # cat_selector = make_column_selector(dtype_exclude=np.float32)
     # Number Selector
-    numerical_selector = make_column_selector(dtype_exclude=np.uint8)
-    # category_transformer
-    # Feature Selector
-    sel = SelectFromModel(estimator=ElasticNet(precompute=True), threshold="median")
-    numeric_scaler = StandardScaler()
     # cat_scaler = OneHotEncoder(sparse=True)
     # linear_prep = ColumnTransformer(
     #     transformers=[("num", numeric_scaler, numerical_selector)]
     # )
+    # category_transformer
+    # Feature Selector
+    numerical_selector = make_column_selector(dtype_exclude=np.uint8)
+    sel = SelectFromModel(estimator=ElasticNet(precompute=True), threshold="median")
+    numeric_scaler = StandardScaler()
     tree_prep = ColumnTransformer(
         transformers=[("num", numeric_scaler, numerical_selector)]
     )
@@ -183,29 +183,6 @@ training_targets = [
 ]
 
 
-# start = 3
-# if start == 3:
-#     for cl in trgs:
-#         # with dpctl.device_context("opencl:gpu"):
-#         with parallel_backend("threading", n_jobs=-1):
-#             gc.collect()
-#             X_train, X_test, y_train, y_test = get_data_feed(cl)
-#             new_stack = gen_stack()
-#             gc.collect()
-#
-#             new_stack.fit(X_train, y_train)
-#             yp = new_stack.predict(X_test)
-#             save_pipeline(cl, new_stack)
-#             print(mean_squared_error(yp, y_test))
-#         break
-#
-# def feature_one_hot(f, df):
-#     f_one_hot = pd.get_dummies(df[f], prefix=str(f))
-#     df = pd.concat([df, f_one_hot], axis=1)
-#     df.drop([f], axis=1, inplace=True)
-#     return df.copy()
-
-
 def gen_sparse_data(dpkl) -> pd.DataFrame:
     cats = [x for x in dpkl.columns if "F_2" in x]
     # for c in cats:
@@ -244,9 +221,31 @@ if __name__ == '__main__':
     with open("data.pkl", "rb") as fp:
         dataset = pickle.load(fp)
         # run(dataset)
-        print(f"dense_type: {dataset.memory_usage(index=True, deep=True).sum()/10**6}MB")
+        print(f"dense_type: {dataset.memory_usage(index=True, deep=True).sum() / 10 ** 6}MB")
         sparse_data = gen_sparse_data(dataset)
         print(sparse_data.dtypes.value_counts())
-        print(f"sparse_type: {sparse_data.memory_usage(index=True, deep=True).sum()/10**6}MB")
+        print(f"sparse_type: {sparse_data.memory_usage(index=True, deep=True).sum() / 10 ** 6}MB")
         sparse_data_np: np.ndarray = sparse_data.to_numpy()
-        sparse_data_np
+        print(f"numpy_type: {sparse_data_np.nbytes / 10 ** 6}MB")
+
+# start = 3
+# if start == 3:
+#     for cl in trgs:
+#         # with dpctl.device_context("opencl:gpu"):
+#         with parallel_backend("threading", n_jobs=-1):
+#             gc.collect()
+#             X_train, X_test, y_train, y_test = get_data_feed(cl)
+#             new_stack = gen_stack()
+#             gc.collect()
+#
+#             new_stack.fit(X_train, y_train)
+#             yp = new_stack.predict(X_test)
+#             save_pipeline(cl, new_stack)
+#             print(mean_squared_error(yp, y_test))
+#         break
+#
+# def feature_one_hot(f, df):
+#     f_one_hot = pd.get_dummies(df[f], prefix=str(f))
+#     df = pd.concat([df, f_one_hot], axis=1)
+#     df.drop([f], axis=1, inplace=True)
+#     return df.copy()
