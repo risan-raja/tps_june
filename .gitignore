@@ -63,5 +63,6 @@
 /data/
 /*.pkl
 /data/
-/*.token
+/*.token.*
 
+/sigopt.token
