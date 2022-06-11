@@ -65,4 +65,5 @@
 /data/
 /*.token.*
 
-/sigopt.token
+/sigopt.json
+/sigopt.json
