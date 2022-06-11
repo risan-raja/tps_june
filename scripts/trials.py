@@ -244,6 +244,9 @@ if __name__ == '__main__':
     with open("data.pkl", "rb") as fp:
         dataset = pickle.load(fp)
         # run(dataset)
+        print(f"dense_type: {dataset.memory_usage(index=True, deep=True).sum()/10**6}MB")
         sparse_data = gen_sparse_data(dataset)
         print(sparse_data.dtypes.value_counts())
-        print(sparse_data.memory_usage())
+        print(f"sparse_type: {sparse_data.memory_usage(index=True, deep=True).sum()/10**6}MB")
+        sparse_data_np: np.ndarray = sparse_data.to_numpy()
+        sparse_data_np
