@@ -1,0 +1,1 @@
+/home/mlop3n/PycharmProjects/tps_june/data.pkl
