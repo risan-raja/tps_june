@@ -1,1 +1,0 @@
-/home/mlop3n/PycharmProjects/tps_june/missing_data.pkl

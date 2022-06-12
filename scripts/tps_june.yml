@@ -1,0 +1,303 @@
+# packages in environment at /opt/myintel/intelpython/latest/envs/tps_june:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                 conda_forge    conda-forge
+_openmp_mutex             4.5                       2_gnu    conda-forge
+abseil-cpp                20210324.2           h2531618_0    file:///opt/myintel/conda_channel
+aiohttp                   3.8.1            py39hb9d737c_1    conda-forge
+aiohttp-cors              0.7.0                      py_0    conda-forge
+aioredis                  1.3.1              pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+aiosignal                 1.2.0              pyhd8ed1ab_0    conda-forge
+arrow-cpp                 6.0.1           py39had3a21f_11_cpu    conda-forge
+arrow-cpp-proc            3.0.0                       cpu    conda-forge
+asttokens                 2.0.5              pyhd3eb1b0_0  
+async-timeout             4.0.1              pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+attrs                     21.4.0             pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+aws-c-cal                 0.5.11               h95a6274_0    conda-forge
+aws-c-common              0.6.2                h7f98852_0    conda-forge
+aws-c-event-stream        0.2.7               h3541f99_13    conda-forge
+aws-c-io                  0.10.5               hfb6a706_0    conda-forge
+aws-checksums             0.1.11               ha31a3da_7    conda-forge
+aws-sdk-cpp               1.8.186              hb4091e7_3    conda-forge
+backcall                  0.2.0              pyhd3eb1b0_0  
+backoff                   1.11.1                   pypi_0    pypi
+binutils_impl_linux-64    2.36.1               h193b22a_2    conda-forge
+binutils_linux-64         2.36                hf3e587d_10    conda-forge
+blessings                 1.7             py39hf3d152e_1006    conda-forge
+blosc                     1.21.1               h83bc5f7_3    conda-forge
+bokeh                     2.4.2            py39h06a4308_1  
+boost-cpp                 1.74.0               h6cacc03_7    conda-forge
+boto3                     1.16.34                  pypi_0    pypi
+botocore                  1.19.63                  pypi_0    pypi
+bottleneck                1.3.4            py39hce1f21e_0    file:///opt/myintel/conda_channel
+brotli                    1.0.9                hf484d3e_2    file:///opt/myintel/conda_channel
+brotlipy                  0.7.0           py39h27cfd23_1003    intel
+bzip2                     1.0.8                hb9a14ef_9    file:///opt/myintel/conda_channel
+c-ares                    1.18.1               h7f8727e_0    file:///opt/myintel/conda_channel
+ca-certificates           2022.5.18.1          ha878542_0    conda-forge
+cachetools                5.2.0                    pypi_0    pypi
+cairo                     1.16.0               h19f5f5c_2  
+certifi                   2022.5.18.1      py39hf3d152e_0    conda-forge
+cffi                      1.15.0           py39hd667e15_1    intel
+cfitsio                   4.0.0                h9a35b8e_0    conda-forge
+charset-normalizer        2.0.12             pyhd8ed1ab_0    conda-forge
+click                     8.0.4            py39h06a4308_0    file:///opt/myintel/conda_channel
+cloudpickle               1.6.0                      py_0    intel
+colorama                  0.4.4              pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+colorful                  0.5.4              pyhd8ed1ab_0    conda-forge
+cryptography              37.0.2                   pypi_0    pypi
+curl                      7.82.0               h7f8727e_0  
+cytoolz                   0.11.0           py39h27cfd23_0  
+daal4py                   2021.6.0         py39_intel_915    intel
+dal                       2021.6.0              intel_915    intel
+dask                      2022.5.0         py39h06a4308_0  
+dask-core                 2022.5.0         py39h06a4308_0  
+dask-glm                  0.2.0              pyhd3eb1b0_0  
+dask-ml                   1.9.0              pyhd3eb1b0_0  
+debugpy                   1.5.1            py39h295c915_0  
+decorator                 5.0.9              pyhd3eb1b0_0    intel
+distlib                   0.3.4              pyhd8ed1ab_0    conda-forge
+distributed               2022.5.0         py39h06a4308_0  
+docker                    4.4.4                    pypi_0    pypi
+double-conversion         3.2.0                h9c3ff4c_0    conda-forge
+dpcpp-cpp-rt              2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+dpcpp_cpp_rt              2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+dpctl                     0.12.0           py39h6461980_0    intel
+entrypoints               0.4              py39h06a4308_0  
+executing                 0.8.3              pyhd3eb1b0_0  
+expat                     2.4.8                h27087fc_0    conda-forge
+filelock                  3.6.0              pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+fontconfig                2.14.0               h8e229c2_0    conda-forge
+fortran_rt                2022.1.0             intel_3768    intel
+freetype                  2.10.4               h0708190_1    conda-forge
+freexl                    1.0.6                h7f98852_0    conda-forge
+frozenlist                1.3.0            py39hb9d737c_1    conda-forge
+fsspec                    2022.2.0           pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+gcc_impl_linux-64         11.2.0              h82a94d6_16    conda-forge
+gcc_linux-64              11.2.0              h39a9532_10    conda-forge
+geos                      3.10.2               h9c3ff4c_0    conda-forge
+geotiff                   1.7.0                h6593c0a_6    conda-forge
+gflags                    2.2.2                he6710b0_0    file:///opt/myintel/conda_channel
+giflib                    5.2.1                h7b6447c_1    intel
+gitdb                     4.0.9                    pypi_0    pypi
+gitpython                 3.1.27                   pypi_0    pypi
+glib                      2.69.1               h4ff587b_1  
+glog                      0.5.0                h2531618_0    file:///opt/myintel/conda_channel
+google-api-core           2.8.1              pyhd8ed1ab_0    conda-forge
+google-auth               2.7.0              pyh6c4a22f_1    conda-forge
+googleapis-common-protos  1.56.2           py39hf3d152e_0    conda-forge
+gpustat                   0.6.0              pyhd8ed1ab_1    conda-forge
+grpc-cpp                  1.44.0               h9e046d8_2    conda-forge
+grpcio                    1.42.0           py39hd17c7be_1    file:///opt/myintel/conda_channel
+gxx_impl_linux-64         11.2.0              h82a94d6_16    conda-forge
+gxx_linux-64              11.2.0              hacbe6df_10    conda-forge
+hdf4                      4.2.15               h10796ff_3    conda-forge
+hdf5                      1.12.1          nompi_h2750804_103    conda-forge
+heapdict                  1.0.1              pyhd3eb1b0_0  
+hiredis                   1.1.0            py39h27cfd23_1    file:///opt/myintel/conda_channel
+icc_rt                    2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+icu                       69.1                 h9c3ff4c_0    conda-forge
+idna                      3.3                      pypi_0    pypi
+impi_rt                   2021.6.0              intel_602    intel
+importlib-metadata        4.11.4           py39hf3d152e_0    conda-forge
+importlib_resources       5.7.1              pyhd8ed1ab_1    conda-forge
+intel-cmplr-lib-rt        2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+intel-cmplr-lic-rt        2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+intel-fortran-rt          2022.1.0             intel_3768    intel
+intel-opencl-rt           2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+intel-openmp              2022.1.0             intel_3768    file:///opt/myintel/conda_channel
+intelpython               2022.1.0                      0    file:///opt/myintel/conda_channel
+ipykernel                 6.9.1            py39h06a4308_0  
+ipython                   8.3.0            py39h06a4308_0  
+jbig                      2.1               h7f98852_2003    conda-forge
+jedi                      0.18.1           py39h06a4308_1  
+jinja2                    3.0.1              pyhd3eb1b0_0    intel
+jmespath                  0.10.0                   pypi_0    pypi
+joblib                    1.0.1              pyhd3eb1b0_0    intel
+jpeg                      9d                   h36c2ea0_3    intel
+json-c                    0.15                 h98cffda_0    conda-forge
+jsonschema                4.6.0              pyhd8ed1ab_0    conda-forge
+jupyter_client            7.2.2            py39h06a4308_0  
+jupyter_core              4.10.0           py39h06a4308_0  
+kealib                    1.4.14               hfe1a663_4    conda-forge
+kernel-headers_linux-64   2.6.32              he073ed8_15    conda-forge
+krb5                      1.19.2               hac12032_0    file:///opt/myintel/conda_channel
+kubernetes                12.0.1                   pypi_0    pypi
+lcms2                     2.12                 h3be6417_1    intel
+ld_impl_linux-64          2.36.1               hea4e1c9_2    conda-forge
+lerc                      3.0                  h9c3ff4c_0    conda-forge
+libarchive                3.5.2                hccf745f_1    conda-forge
+libbrotlicommon           1.0.9                h166bdaf_7    conda-forge
+libbrotlidec              1.0.9                h166bdaf_7    conda-forge
+libbrotlienc              1.0.9                h166bdaf_7    conda-forge
+libclang-cpp              11.1.0          default_ha53f305_1    conda-forge
+libclang-cpp11.1          11.1.0          default_ha53f305_1    conda-forge
+libcurl                   7.82.0               h0b77cf5_0  
+libdap4                   3.20.6               hd7c4107_2    conda-forge
+libdeflate                1.8                  h7f8727e_5  
+libedit                   3.1.20210910         h7f8727e_0    file:///opt/myintel/conda_channel
+libev                     4.33                 h7f8727e_1    file:///opt/myintel/conda_channel
+libevent                  2.1.12               h8f2d780_0    file:///opt/myintel/conda_channel
+libffi                    3.3                          14    file:///opt/myintel/conda_channel
+libgcc-devel_linux-64     11.2.0              h0952999_16    conda-forge
+libgcc-ng                 12.1.0              h8d9b700_16    conda-forge
+libgdal                   3.4.1                h7b6f8d3_2    conda-forge
+libgfortran-ng            12.1.0              h69a702a_16    conda-forge
+libgfortran5              12.1.0              hdcd56e2_16    conda-forge
+libgomp                   12.1.0              h8d9b700_16    conda-forge
+libiconv                  1.16                 h7f8727e_2  
+libkml                    1.3.0             h238a007_1014    conda-forge
+libllvm11                 11.1.0               hf817b99_3    conda-forge
+libnetcdf                 4.8.1           nompi_hb3fd0d9_101    conda-forge
+libnghttp2                1.46.0               hce63b2e_0    file:///opt/myintel/conda_channel
+libnsl                    2.0.0                h7f98852_0    conda-forge
+libpng                    1.6.37                        8    intel
+libpq                     14.2                 hd57d9b9_0    conda-forge
+libprotobuf               3.19.4               h780b84a_0    conda-forge
+librttopo                 1.1.0                hf69c175_9    conda-forge
+libsanitizer              11.2.0              he4da1e4_16    conda-forge
+libsodium                 1.0.18               h7b6447c_0  
+libspatialite             5.0.1               h0e567f8_14    conda-forge
+libssh2                   1.9.0                h1ba5d50_1    file:///opt/myintel/conda_channel
+libstdcxx-devel_linux-64  11.2.0              h0952999_16    conda-forge
+libstdcxx-ng              12.1.0              ha89aaad_16    conda-forge
+libthrift                 0.15.0               hcc01f38_0    file:///opt/myintel/conda_channel
+libtiff                   4.3.0                h6f004c6_2    conda-forge
+libunwind                 1.6.2                h9c3ff4c_0    conda-forge
+libutf8proc               2.7.0                h7f98852_0    conda-forge
+libuuid                   2.32.1            h7f98852_1000    conda-forge
+libwebp                   1.2.0                h89dd481_1    intel
+libwebp-base              1.2.0                h7f98852_3    intel
+libxcb                    1.15                 h7f8727e_0  
+libxml2                   2.9.12               h6441c91_2    intel
+libzip                    1.8.0                h4de3113_1    conda-forge
+libzlib                   1.2.12               h166bdaf_0    conda-forge
+llvmlite                  0.38.1           py39h7d9a04d_0    conda-forge
+locket                    1.0.0            py39h06a4308_0  
+lz4                       3.1.3            py39h27cfd23_0  
+lz4-c                     1.9.3                h688b341_1    file:///opt/myintel/conda_channel
+lzo                       2.10              h516909a_1000    conda-forge
+markupsafe                2.0.1            py39h27cfd23_0    intel
+matplotlib-inline         0.1.2              pyhd3eb1b0_2  
+mkl                       2022.1.0              intel_223    file:///opt/myintel/conda_channel
+mkl-service               2.4.0           py39h7987b76_11    file:///opt/myintel/conda_channel
+mkl_fft                   1.3.1           py39h542d01b_16    file:///opt/myintel/conda_channel
+mkl_random                1.2.2           py39hdd7f59e_16    file:///opt/myintel/conda_channel
+mkl_umath                 0.1.1           py39h3242e30_26    file:///opt/myintel/conda_channel
+modin-core                0.14.1           py39hf3d152e_1    conda-forge
+modin-omnisci             0.14.1           py39hf3d152e_1    conda-forge
+modin-ray                 0.14.1           py39hf3d152e_1    conda-forge
+msgpack-python            1.0.2            py39hff7bd54_1    file:///opt/myintel/conda_channel
+multidict                 6.0.2            py39hb9d737c_1    conda-forge
+multipledispatch          0.6.0            py39h06a4308_0  
+ncurses                   6.3                  h7f8727e_2    file:///opt/myintel/conda_channel
+nest-asyncio              1.5.5            py39h06a4308_0  
+numba                     0.55.1           py39hefe1858_1    intel
+numexpr                   2.8.1            py39hb94f6f9_1    file:///opt/myintel/conda_channel
+numpy                     1.21.4          py39ha3f613e_16    file:///opt/myintel/conda_channel
+numpy-base                1.21.4          py39h1b56c09_16    file:///opt/myintel/conda_channel
+nvidia-ml                 7.352.0                    py_0    conda-forge
+oauthlib                  3.2.0                    pypi_0    pypi
+olefile                   0.46               pyhd3eb1b0_1    intel
+omniscidb-common          5.10.1               h1234567_0    conda-forge
+omniscidbe                5.10.1           h1234567_0_cpu    conda-forge
+opencensus                0.9.0              pyhd8ed1ab_0    conda-forge
+opencensus-context        0.1.2            py39hf3d152e_5    conda-forge
+openjdk                   8.0.312              h7f98852_0    conda-forge
+openjpeg                  2.4.0                hb52868f_1    conda-forge
+openssl                   1.1.1o               h166bdaf_0    conda-forge
+orc                       1.7.3                h1be678f_0    conda-forge
+packaging                 21.3               pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+pandas                    1.4.2            py39h1832856_1    conda-forge
+parquet-cpp               1.5.1                h34088ae_4    file:///opt/myintel/conda_channel
+parso                     0.8.3              pyhd3eb1b0_0  
+partd                     1.2.0              pyhd3eb1b0_1  
+pcre                      8.45                 h9c3ff4c_0    conda-forge
+pexpect                   4.8.0              pyhd3eb1b0_3  
+pickleshare               0.7.5           pyhd3eb1b0_1003  
+pillow                    9.0.0            py39h5aabda8_1    intel
+pint                      0.16.1                   pypi_0    pypi
+pip                       21.2.4           py39h06a4308_0    file:///opt/myintel/conda_channel
+pixman                    0.40.0               h7f8727e_1  
+platformdirs              2.5.1              pyhd8ed1ab_0    conda-forge
+poppler                   21.11.0              h9f6c795_0  
+poppler-data              0.4.11               hd8ed1ab_0    conda-forge
+postgresql                14.2                 h2510834_0    conda-forge
+proj                      8.2.1                h277dcde_0    conda-forge
+prometheus_client         0.13.1             pyhd8ed1ab_0    conda-forge
+prompt-toolkit            3.0.20             pyhd3eb1b0_0  
+protobuf                  3.19.4           py39he80948d_0    conda-forge
+psutil                    5.8.0            py39hb141de2_2    file:///opt/myintel/conda_channel
+ptyprocess                0.7.0              pyhd3eb1b0_2  
+pure_eval                 0.2.2              pyhd3eb1b0_0  
+py-spy                    0.3.11               h060cca7_1    conda-forge
+pyarrow                   6.0.1           py39hff6fa39_11_cpu    conda-forge
+pyasn1                    0.4.8                      py_0    conda-forge
+pyasn1-modules            0.2.8                    pypi_0    pypi
+pycparser                 2.21               pyhd3eb1b0_0    intel
+pygments                  2.11.2             pyhd3eb1b0_0  
+pyomniscidbe              5.10.1          py39h1234567_0_cpu    conda-forge
+pyopenssl                 22.0.0             pyhd3eb1b0_0    intel
+pyparsing                 3.0.4              pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+pypng                     0.0.21                   pypi_0    pypi
+pyrsistent                0.18.1           py39hb9d737c_1    conda-forge
+pysocks                   1.7.1            py39h06a4308_0    intel
+python                    3.9.10               h3b4beac_2    intel
+python-dateutil           2.8.2                    py39_2    file:///opt/myintel/conda_channel
+python_abi                3.9                      2_cp39    conda-forge
+pytz                      2021.3             pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+pyu2f                     0.1.5              pyhd8ed1ab_0    conda-forge
+pyyaml                    5.4.1                    pypi_0    pypi
+pyzmq                     22.3.0           py39h295c915_2  
+ray-core                  1.12.1           py39hecbb631_0    conda-forge
+ray-default               1.12.1           py39hf3d152e_0    conda-forge
+re2                       2022.02.01           h9c3ff4c_0    conda-forge
+readline                  8.1.2                h7f8727e_1    file:///opt/myintel/conda_channel
+redis-py                  3.5.3              pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+requests                  2.28.0             pyhd8ed1ab_0    conda-forge
+requests-oauthlib         1.3.1                    pypi_0    pypi
+rsa                       4.8                pyhd8ed1ab_0    conda-forge
+s2n                       1.0.10               h9b69904_0    conda-forge
+s3transfer                0.3.7                    pypi_0    pypi
+scikit-learn              1.0.1            py39h51133e4_0    intel
+scikit-learn-intelex      2021.6.0         py39_intel_915    intel
+scipy                     1.7.3            py39h5c0f66f_1    intel
+setproctitle              1.2.2           py39h27cfd23_1004    file:///opt/myintel/conda_channel
+setuptools                58.0.4           py39h06a4308_0    file:///opt/myintel/conda_channel
+sigopt                    8.4.0                    pypi_0    pypi
+six                       1.16.0             pyhd3eb1b0_1    file:///opt/myintel/conda_channel
+smart_open                6.0.0              pyhd8ed1ab_0    conda-forge
+smmap                     5.0.0                    pypi_0    pypi
+snappy                    1.1.9                h295c915_0  
+sortedcontainers          2.4.0              pyhd3eb1b0_0  
+sqlite                    3.38.0               hc218d9a_0    file:///opt/myintel/conda_channel
+stack_data                0.2.0              pyhd3eb1b0_0  
+sysroot_linux-64          2.12                he073ed8_15    conda-forge
+tbb                       2021.6.0              intel_835    file:///opt/myintel/conda_channel
+tbb4py                    2021.6.0         py39_intel_835    file:///opt/myintel/conda_channel
+tblib                     1.7.0              pyhd3eb1b0_0  
+threadpoolctl             2.2.0              pyh0d69192_0    intel
+tiledb                    2.6.4                h1e4a385_0    conda-forge
+tk                        8.6.12               h27826a3_0    conda-forge
+toolz                     0.11.2             pyhd3eb1b0_0  
+tornado                   6.1              py39h27cfd23_0    intel
+traitlets                 5.1.1              pyhd3eb1b0_0  
+typing-extensions         4.1.1                hd3eb1b0_0    file:///opt/myintel/conda_channel
+typing_extensions         4.1.1              pyh06a4308_0    file:///opt/myintel/conda_channel
+tzcode                    2022a                h166bdaf_0    conda-forge
+tzdata                    2022a                h191b570_0    conda-forge
+urllib3                   1.26.9                   pypi_0    pypi
+virtualenv                20.14.1          py39hf3d152e_0    conda-forge
+wcwidth                   0.2.5              pyhd3eb1b0_0  
+websocket-client          1.3.2                    pypi_0    pypi
+wheel                     0.37.1             pyhd3eb1b0_0    file:///opt/myintel/conda_channel
+xerces-c                  3.2.3                h8ce2273_4    conda-forge
+xgboost                   1.4.3           47_gac0d25py39_7    intel
+xz                        5.2.5                h74280d8_2    intel
+yaml                      0.2.5                h7b6447c_0    file:///opt/myintel/conda_channel
+yarl                      1.7.2            py39hb9d737c_2    conda-forge
+zeromq                    4.3.4                h2531618_0  
+zict                      2.0.0              pyhd3eb1b0_0  
+zipp                      3.8.0              pyhd8ed1ab_0    conda-forge
+zlib                      1.2.12               h166bdaf_0    conda-forge
+zstd                      1.5.2                h8a70e8d_1    conda-forge

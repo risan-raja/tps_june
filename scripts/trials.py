@@ -6,26 +6,35 @@ import pickle
 import warnings
 from collections import defaultdict
 
+# try:
+#     ray.init()
+# except:
+#     pass
+# import modin.pandas as pd
+# from data_handling import get_info
 import numpy as np
 import pandas as pd
+from dask.dataframe import from_pandas
+from dask.distributed import Client
 from joblib import parallel_backend
 from sklearn import set_config
 from sklearn.compose import ColumnTransformer, make_column_selector
 from sklearn.ensemble import (
     AdaBoostRegressor,
+    RandomForestRegressor,
     ExtraTreesRegressor,
     GradientBoostingRegressor,
     HistGradientBoostingRegressor,
     StackingRegressor,
 )
-from sklearn.feature_selection import (
-    SelectFromModel,
-)
+from sklearn.feature_selection import SelectFromModel
 from sklearn.linear_model import (
     ARDRegression,
     BayesianRidge,
     ElasticNet,
+    LarsCV,
     Lasso,
+    LassoCV,
     LassoLars,
     LassoLarsIC,
     RANSACRegressor,
@@ -38,6 +47,10 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 from sklearnex import patch_sklearn
+from tqdm import tqdm
+
+# import ray
+
 
 pd.options.display.max_columns = 90
 pd.options.display.max_rows = 90
@@ -53,62 +66,81 @@ tol = 0.000001
 
 
 def gen_stack():
-    # Category Selector
-    # cat_selector = make_column_selector(dtype_exclude=np.float32)
-    # Number Selector
-    # cat_scaler = OneHotEncoder(sparse=True)
-    # linear_prep = ColumnTransformer(
-    #     transformers=[("num", numeric_scaler, numerical_selector)]
-    # )
-    # category_transformer
-    # Feature Selector
-    numerical_selector = make_column_selector(dtype_exclude=np.uint8)
-    sel = SelectFromModel(estimator=ElasticNet(precompute=True), threshold="median")
-    numeric_scaler = StandardScaler()
-    tree_prep = ColumnTransformer(
-        transformers=[("num", numeric_scaler, numerical_selector)]
-    )
-    lasso_linear_prep = ColumnTransformer(transformers=[("num", numeric_scaler, numerical_selector)])
     modis = [
-        make_pipeline(lasso_linear_prep, sel, LassoLarsIC(normalize=False, precompute=True, criterion="bic")),
-        make_pipeline(lasso_linear_prep, sel, ARDRegression(n_iter=1000, compute_score=True, tol=tol)),
-        make_pipeline(lasso_linear_prep, sel,
-                      BayesianRidge(lambda_init=0.001, n_iter=iter_, tol=tol, compute_score=True)),
-        make_pipeline(lasso_linear_prep, sel, Lasso(precompute=True, max_iter=iter_, tol=tol, selection="cyclic")),
-        make_pipeline(lasso_linear_prep, sel, LassoLars(precompute=True, max_iter=iter_)),
-        make_pipeline(lasso_linear_prep, sel, TweedieRegressor(power=0)),
+        make_pipeline(LassoLarsIC(normalize=False, precompute=True, criterion="bic")),
         make_pipeline(
-            lasso_linear_prep,
-            sel,
             RANSACRegressor(
                 min_samples=500,
-                base_estimator=LassoLarsIC(normalize=False, precompute=True, criterion="aic"),
-                max_trials=10000,
+                base_estimator=ARDRegression(),
+                max_trials=1000,
             ),
         ),
         make_pipeline(
-            lasso_linear_prep,
-            sel,
             ElasticNet(
                 precompute=True,
             ),
         ),
-        make_pipeline(tree_prep, sel, HistGradientBoostingRegressor(max_iter=1000, max_depth=500)),
-        make_pipeline(tree_prep, sel, GradientBoostingRegressor(random_state=0, max_depth=30)),
-        make_pipeline(tree_prep, sel, DecisionTreeRegressor()),
-        make_pipeline(
-            tree_prep,
-            sel,
-            ExtraTreesRegressor(n_jobs=-1),
-        ),
-        make_pipeline(tree_prep, sel, AdaBoostRegressor(base_estimator=Lasso(precompute=True))),
+        make_pipeline(Lasso(precompute=True, max_iter=iter_, tol=tol)),
+        make_pipeline(LassoLars(precompute=True, max_iter=iter_)),
+        # make_pipeline(LassoCV(precompute=True, n_jobs=-1, cv=5, tol=tol)),
+        # make_pipeline(TweedieRegressor(power=0)),
+        # make_pipeline(HistGradientBoostingRegressor(max_iter=1000, max_depth=50)),
+        # make_pipeline(
+        #     GradientBoostingRegressor(
+        #         learning_rate=0.0001,
+        #         n_estimators=3000,
+        #         subsample=0.8,
+        #         init=ElasticNet(precompute=True),
+        #         validation_fraction=0.2,
+        #         n_iter_no_change=30,
+        #         random_state=0,
+        #         max_depth=30,
+        #     ),
+        # ),
+        # make_pipeline(DecisionTreeRegressor()),
+        # make_pipeline(
+        #     ExtraTreesRegressor(
+        #         n_jobs=-1,
+        #         bootstrap=True,
+        #         n_estimators=50,
+        #         random_state=0,
+        #     ),
+        # ),
+        # make_pipeline(
+        #     AdaBoostRegressor(
+        #         base_estimator=Lasso(precompute=True), n_estimators=30, random_state=0, loss="exponential"
+        #     ),
+        # ),
     ]
+
+    # numerical_selector = make_column_selector(dtype_include=np.float32)
+    # sel = SelectFromModel(estimator=GradientBoostingRegressor(
+    #             learning_rate=0.0001,
+    #             n_estimators=3000,
+    #             subsample=0.8,
+    #             init=ElasticNet(precompute=True),
+    #             validation_fraction=0.2,
+    #             n_iter_no_change=30,
+    #             random_state=0,
+    #             max_depth=30,
+    #         ), threshold="median")
+    # numeric_scaler = StandardScaler()
+    # tree_prep = ColumnTransformer(transformers=[("num", numeric_scaler, numerical_selector)], remainder="passthrough")
+    # lasso_linear_prep = ColumnTransformer(transformers=[("num", numeric_scaler, numerical_selector)])
+    # # modis = []
     stacked_estimators = []
     for q in modis:
-        estimator_name = q[2].__class__.__name__
+        estimator_name = q[0].__class__.__name__
         stacked_estimators.append((estimator_name, q))
-    learning_stack = StackingRegressor(estimators=stacked_estimators, cv=3, n_jobs=-1, final_estimator=RidgeCV())
-    return learning_stack
+    estimator_stack = StackingRegressor(
+        estimators=stacked_estimators, cv=2, n_jobs=-1, final_estimator=HistGradientBoostingRegressor()
+    )
+    # learning_stack = make_pipeline(tree_prep, sel, estimator_stack)
+
+    return estimator_stack
+
+
+# gen_stack(modis)
 
 
 def save_pipeline(c, p):
@@ -119,8 +151,9 @@ def save_pipeline(c, p):
 def get_data_feed(c, x_y):
     training_features = x_y.drop([c], axis=1)
     y = x_y[c]
-    x_temp_train, x_temp_test, y_temp_train, y_temp_train = train_test_split(training_features, y, test_size=0.2,
-                                                                             random_state=0)
+    x_temp_train, x_temp_test, y_temp_train, y_temp_train = train_test_split(
+        training_features, y, test_size=0.3, random_state=0
+    )
     return x_temp_train, x_temp_test, y_temp_train, y_temp_train
 
 
@@ -202,50 +235,32 @@ def gen_sparse_data(dpkl) -> pd.DataFrame:
     return dpkl
 
 
-def run(dataset_db):
-    trd = dataset_db[dataset_db.missing_cols == 0].copy()
-    x_y = trd.drop(["missing_cols"], axis=1)
-    with parallel_backend("loky", n_jobs=-1):
-        for cl in training_targets:
-            gc.collect()
-            x_train, x_test, y_train, y_test = get_data_feed(cl, x_y)
-            new_stack = gen_stack()
-            gc.collect()
-            new_stack.fit(x_train, y_train)
-            yp = new_stack.predict(x_test)
-            print(mean_squared_error(yp, y_test))
-            save_pipeline(cl, new_stack)
+if __name__ == "__main__":
+    cli = Client(processes=False)
 
+    def run(dataset_db):
+        # global modis
+        numerical_selector = make_column_selector(dtype_include=np.float32)
+        sel = SelectFromModel(estimator=RandomForestRegressor(n_jobs=-1,n_estimators=30), threshold="median")
+        numeric_scaler = StandardScaler()
+        tree_prep = ColumnTransformer(transformers=[("num", numeric_scaler, numerical_selector)], remainder="passthrough")
+        trd = dataset_db[dataset_db.missing_cols == 0].copy()
+        x_y = trd.drop(["missing_cols"], axis=1)
+        with parallel_backend("dask"):
+            for cl in tqdm(training_targets):
+                training_features = x_y.drop([cl], axis=1)
+                y = x_y[cl]
+                x_train, x_test, y_train, y_test = train_test_split(training_features, y, test_size=0.3, random_state=0)
+                t = make_pipeline(tree_prep, sel)
+                x_train_t = t.fit_transform(x_train, y_train)
+                new_stack = gen_stack()
+                new_stack.fit(x_train_t, y_train)
+                yp = new_stack.predict(t.transform(x_test))
+                with open("results_mod", "a") as fp:
+                    fp.write(f"{cl} : {mean_squared_error(yp, y_test)}\n\n")
+                print(f" mean_squared_error {cl} : {mean_squared_error(yp, y_test)}\n\n")
+                save_pipeline(cl, new_stack)
 
-if __name__ == '__main__':
-    with open("data.pkl", "rb") as fp:
-        dataset = pickle.load(fp)
-        # run(dataset)
-        print(f"dense_type: {dataset.memory_usage(index=True, deep=True).sum() / 10 ** 6}MB")
-        sparse_data = gen_sparse_data(dataset)
-        print(sparse_data.dtypes.value_counts())
-        print(f"sparse_type: {sparse_data.memory_usage(index=True, deep=True).sum() / 10 ** 6}MB")
-        sparse_data_np: np.ndarray = sparse_data.to_numpy()
-        print(f"numpy_type: {sparse_data_np.nbytes / 10 ** 6}MB")
-
-# start = 3
-# if start == 3:
-#     for cl in trgs:
-#         # with dpctl.device_context("opencl:gpu"):
-#         with parallel_backend("threading", n_jobs=-1):
-#             gc.collect()
-#             X_train, X_test, y_train, y_test = get_data_feed(cl)
-#             new_stack = gen_stack()
-#             gc.collect()
-#
-#             new_stack.fit(X_train, y_train)
-#             yp = new_stack.predict(X_test)
-#             save_pipeline(cl, new_stack)
-#             print(mean_squared_error(yp, y_test))
-#         break
-#
-# def feature_one_hot(f, df):
-#     f_one_hot = pd.get_dummies(df[f], prefix=str(f))
-#     df = pd.concat([df, f_one_hot], axis=1)
-#     df.drop([f], axis=1, inplace=True)
-#     return df.copy()
+    dataset = pd.read_pickle("cooked_sparsely.pkl")
+    # with parallel_backend("loky", n_jobs=-1):
+    run(dataset)
