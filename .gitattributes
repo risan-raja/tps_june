@@ -2,3 +2,4 @@
 /scripts/cooked_sparsely.pkl filter=lfs diff=lfs merge=lfs -text
 /scripts/data.csv filter=lfs diff=lfs merge=lfs -text
 /notebooks/cooked.pkl filter=lfs diff=lfs merge=lfs -text
+/notebooks/cookeder.pkl filter=lfs diff=lfs merge=lfs -text
